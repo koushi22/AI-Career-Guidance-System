@@ -31,6 +31,7 @@ app.use(
     credentials: true
   })
 );
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -43,14 +44,13 @@ app.use(
   })
 );
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'AI Career Assistant API is running' });
-});
+app.get('/health' ,(req, res) => {
+  res.send('server is working');
+})
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/resumes', resumeRoutes);
-// Public job search endpoint (allows unauthenticated fallback results).
 const { getJobs } = require('./controllers/jobsController');
 app.get('/api/jobs', getJobs);
 app.use('/api/jobs', jobsRoutes);
