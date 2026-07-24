@@ -15,6 +15,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
+  'https://ai-career-guidance-system-client.vercel.app/',
   process.env.CLIENT_URL
 ].filter(Boolean);
 
